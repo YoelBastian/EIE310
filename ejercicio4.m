@@ -1,5 +1,9 @@
 
-Vo(1) = 0;
-for n = 2 : 100,
-    Vo(n) = 0.1 * Vi(n) + 0.9 * Vo(n-1);
-end
+a = [1, -1, 0.9];
+b = 1;
+[x, n] = impulso(0,-20,100);
+h = filter (b, a ,x);
+[y, m] = escalon(0,-20,100);
+g = filter(b,a,y);
+subplot 121; plot(n,h); title('respuesta Impulso');grid
+subplot 122; plot(m,g); title('respuesta Escalon');grid
